@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator by Rao Awais</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Calculator </h1>
+    </header>
+    <main>
+        <div class="calculator">
+            <input type="text" id="display" disabled>
+            <div class="buttons">
+                <button onclick="clearDisplay()">C</button>
+                <button onclick="deleteChar()">DEL</button>
+                <button onclick="insertOperator('%')">%</button>
+                <button onclick="insertOperator('/')">/</button>
+                
+                <button onclick="insertNumber(7)">7</button>
+                <button onclick="insertNumber(8)">8</button>
+                <button onclick="insertNumber(9)">9</button>
+                <button onclick="insertOperator('*')">*</button>
+                
+                <button onclick="insertNumber(4)">4</button>
+                <button onclick="insertNumber(5)">5</button>
+                <button onclick="insertNumber(6)">6</button>
+                <button onclick="insertOperator('-')">-</button>
+                
+                <button onclick="insertNumber(1)">1</button>
+                <button onclick="insertNumber(2)">2</button>
+                <button onclick="insertNumber(3)">3</button>
+                <button onclick="insertOperator('+')">+</button>
+                
+                <button onclick="insertNumber(0)">0</button>
+                <button onclick="insertOperator('.')">.</button>
+                <button onclick="calculateResult()">=</button>
+            </div>
+        </div>
+    </main>
+    <script>
+        function insertNumber(num) {
+            document.getElementById("display").value += num;
+        }
+
+        function insertOperator(op) {
+            document.getElementById("display").value += op;
+        }
+
+        function clearDisplay() {
+            document.getElementById("display").value = "";
+        }
+
+        function deleteChar() {
+            let display = document.getElementById("display");
+            display.value = display.value.slice(0, -1);
+        }
+
+        function calculateResult() {
+            try {
+                document.getElementById("display").value = eval(document.getElementById("display").value);
+            } catch (e) {
+                alert("Invalid Expression");
+            }
+        }
+    </script>
+</body>
+</html>
